@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:id="@+id/submenuItem"
+    android:layout_marginStart="8dp"
+    android:layout_marginBottom="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/submenu_item_background"
+        android:id="@+id/constraintLayout">
+
+        <TextView
+            android:id="@+id/nameTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="4dp"
+            android:text="Магура"
+            android:textColor="@color/white"
+            android:textSize="20sp"
+
+            android:layout_marginTop="4dp"
+            app:layout_constraintBottom_toTopOf="@id/typeTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/typeTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="Тунец"
+            android:textSize="16sp"
+            android:textColor="@color/textColor"
+
+            android:layout_marginBottom="20dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/priceTitle"/>
+
+        <TextView
+            android:id="@+id/priceTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginBottom="8dp"
+            android:text="80 ₽"
+            android:textColor="@color/white"
+
+            android:textSize="18sp"
+            app:layout_constraintBottom_toTopOf="@id/imageViewComtainer"
+            app:layout_constraintEnd_toStartOf="@+id/weightTitle"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/weightTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:text="/ 40 г."
+            android:textColor="@color/textColor"
+            android:textSize="14sp"
+
+            app:layout_constraintBottom_toBottomOf="@id/priceTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/priceTitle"
+            app:layout_constraintTop_toTopOf="@id/priceTitle" />
+
+        <ImageView
+            android:id="@+id/spicyImg"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+
+            android:src="@drawable/spicy_image"
+
+            app:layout_constraintTop_toTopOf="@id/priceTitle"
+            app:layout_constraintBottom_toBottomOf="@id/priceTitle"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="8dp"/>
+
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/imageViewComtainer"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:cardCornerRadius="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <ImageView
+                android:id="@+id/image"
+                android:layout_width="160dp"
+                android:layout_height="100dp"
+                android:outlineProvider="background"
+                android:scaleType="centerCrop"
+                android:src="@drawable/menu_item_image_example"
+                app:layout_constraintDimensionRatio="1:1" />
+
+        </androidx.cardview.widget.CardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/addToCardButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/constraintLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-32dp"
+        android:paddingStart="20dp"
+
+        android:paddingTop="12dp"
+        android:paddingEnd="20dp"
+        android:paddingBottom="12dp"
+        android:text="В корзину"
+        android:textAllCaps="false"
+
+        android:textSize="16sp"
+        app:backgroundTint="@color/accent"
+        app:cornerRadius="12dp" />
+
+</RelativeLayout>
