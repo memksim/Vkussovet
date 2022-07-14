@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/fragmentStartScreen">
+
+    <fragment
+        android:id="@+id/fragmentStartScreen"
+        android:name="com.memksim.vkussovet.view.splashScreen.FragmentStartScreen"
+        android:label="FragmentStartScreen" >
+        <action
+            android:id="@+id/action_fragmentStartScreen_to_fragmentMenuListPage"
+            app:destination="@id/fragmentMenuListPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentMenuListPage"
+        android:name="com.memksim.vkussovet.view.menuListPage.FragmentMenuListPage"
+        android:label="FragmentMenuListPage" >
+        <action
+            android:id="@+id/action_fragmentMenuListPage_to_fragmentCartPage"
+            app:destination="@id/fragmentCartPage" />
+        <action
+            android:id="@+id/action_fragmentMenuListPage_to_fragmentInfoPage"
+            app:destination="@id/fragmentInfoPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentInfoPage"
+        android:name="com.memksim.vkussovet.view.infoPage.FragmentInfoPage"
+        android:label="FragmentInfoPage" >
+        <action
+            android:id="@+id/action_fragmentInfoPage_to_fragmentMenuListPage"
+            app:destination="@id/fragmentMenuListPage" />
+        <action
+            android:id="@+id/action_fragmentInfoPage_to_fragmentCartPage"
+            app:destination="@id/fragmentCartPage" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentCartPage"
+        android:name="com.memksim.vkussovet.view.cartPage.FragmentCartPage"
+        android:label="FragmentCartPage" >
+        <action
+            android:id="@+id/action_fragmentCartPage_to_fragmentMenuListPage"
+            app:destination="@id/fragmentMenuListPage" />
+        <action
+            android:id="@+id/action_fragmentCartPage_to_fragmentInfoPage"
+            app:destination="@id/fragmentInfoPage" />
+    </fragment>
+</navigation>
