@@ -18,9 +18,14 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.memksim.vkussovetapp.R
 import com.memksim.vkussovetapp.databinding.FragmentMenuListBinding
+import com.memksim.vkussovetapp.model.Menu
 import com.memksim.vkussovetapp.viewmodel.menuListPage.MenuListPageViewModel
 
-class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list) {
+interface ItemClickListener{
+    fun onCLick(menuItem: Menu)
+}
+
+class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickListener {
 
     private var _binding: FragmentMenuListBinding? = null
     private val binding get() = _binding
@@ -51,7 +56,7 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list) {
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.HORIZONTAL)
         dividerItemDecoration.setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.horizontal_divider, null)!!)
-        binding!!.menuList.adapter = MenuAdapter(viewModel.liveData.value!!.menuList, viewModel.liveData.value!!.menuImages)
+        binding!!.menuList.adapter = MenuAdapter(viewModel.liveData.value!!.menuList, viewModel.liveData.value!!.menuImages, this)
         binding!!.menuList.addItemDecoration(dividerItemDecoration)
     }
 
@@ -61,6 +66,10 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list) {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
+    }
+
+    override fun onCLick(menuItem: Menu) {
+        //TODO
     }
 
 }
