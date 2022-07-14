@@ -7,6 +7,7 @@ import com.memksim.vkussovetapp.model.Menu
 import com.memksim.vkussovetapp.model.SubMenu
 import com.memksim.vkussovetapp.model.repos.Repository
 import com.memksim.vkussovetapp.viewmodel.Callback
+import com.squareup.picasso.RequestCreator
 
 class MenuListPageViewModel: ViewModel(), Callback {
 
@@ -21,15 +22,35 @@ class MenuListPageViewModel: ViewModel(), Callback {
         repository.getMenu(this)
     }
 
-    override fun onSuccess(menu: List<Menu>, subMenu: List<SubMenu>) {
+    fun setData(
+        menuList: List<Menu>
+    ){
         _data.value = MenuListPageState(
-            menuList = menu,
+            menuList = menuList,
+            menuImages = repository.loadImages(getUrls(menuList)),
             menuIsNotLoaded = false
         )
     }
 
+    override fun onSuccess(menu: List<Menu>, subMenu: List<SubMenu>) {
+        _data.value = MenuListPageState(
+            menuList = menu,
+            menuImages = repository.loadImages(getUrls(menu)),
+            menuIsNotLoaded = false
+        )
+    }
+
+    private fun getUrls(menu: List<Menu>): List<String>{
+        val urls = arrayListOf<String>()
+        for(i in menu){
+            urls.add(i.image)
+        }
+        return urls
+    }
+
     override fun onError() {
         _data.value = MenuListPageState(
+            listOf(),
             listOf(),
             true
         )

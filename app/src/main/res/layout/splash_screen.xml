@@ -24,7 +24,7 @@
         android:layout_height="wrap_content"
 
         android:text="@string/companyName"
-        android:textSize="64sp"
+        android:textSize="48sp"
         android:textColor="@color/white"
         android:textStyle="bold"
 

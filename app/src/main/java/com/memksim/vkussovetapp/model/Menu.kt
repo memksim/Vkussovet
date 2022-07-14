@@ -15,3 +15,4 @@ data class Menu(
     val name: String,
     val subMenuCount: String
 ): Parcelable
+

@@ -6,6 +6,8 @@ import com.memksim.vkussovetapp.datastore.remote.MenuClient
 import com.memksim.vkussovetapp.datastore.remote.api.MenuApi
 import com.memksim.vkussovetapp.model.MenuRequest
 import com.memksim.vkussovetapp.view.splashScreen.AppCallback
+import com.squareup.picasso.Picasso
+import com.squareup.picasso.RequestCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -15,6 +17,8 @@ class Repository {
     private val api = MenuClient.getClient().create(MenuApi::class.java)
 
     fun loadData(appCallback: AppCallback){
+
+        Log.d(TAG, "loadData: Test")
         api.getMenu()
             .enqueue(object: Callback<MenuRequest>{
                 override fun onResponse(
@@ -26,6 +30,7 @@ class Repository {
                         appCallback.onError()
                     }else{
                         appCallback.onLoaded(response.body()!!.menuList)
+                        Log.d(TAG, "onResponse: ${response.body()!!.menuList[3]}")
                     }
                 }
 
@@ -33,8 +38,16 @@ class Repository {
                     Log.e(TAG, "onFailure: $t", )
                     appCallback.onError(/*TODO*/)
                 }
-
             })
+    }
+
+    fun loadImages(urls: List<String>): List<RequestCreator>{
+        val resultList = arrayListOf<RequestCreator>()
+        for(i in urls){
+            resultList.add(Picasso.get().load("https://vkus-sovet.ru/$i"))
+        }
+
+        return resultList
     }
 
     fun getMenu(callback: com.memksim.vkussovetapp.viewmodel.Callback){

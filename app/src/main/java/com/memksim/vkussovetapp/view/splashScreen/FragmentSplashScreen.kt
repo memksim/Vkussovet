@@ -45,22 +45,28 @@ class FragmentStartScreen: Fragment(R.layout.splash_screen), AppCallback {
         super.onViewCreated(view, savedInstanceState)
         _binding = SplashScreenBinding.bind(view)
 
-        Thread.sleep(1000)
         binding!!.progressBar.visibility = View.VISIBLE
 
         repository.loadData(this)
     }
 
     override fun onLoaded(data: List<Menu>) {
-        val action = FragmentStartScreenDirections
-            .actionFragmentStartScreenToFragmentMenuListPage(data.toTypedArray())
-        Thread.sleep(3000)
-        binding!!.progressBar.visibility = View.GONE
-        navController.navigate(action)
+        navigateNext(data)
     }
 
     override fun onError() {
+        binding!!.progressBar.visibility = View.GONE
         binding!!.errorText.visibility = View.VISIBLE
+    }
+
+    private fun navigateNext(data: List<Menu>){
+        val action = FragmentStartScreenDirections
+            .actionFragmentStartScreenToFragmentMenuListPage(data.toTypedArray())
+
+        Thread.sleep(3000)
+        binding!!.progressBar.visibility = View.GONE
+
+        navController.navigate(action)
     }
 
     override fun onDestroyView() {

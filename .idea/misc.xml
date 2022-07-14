@@ -3,11 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/drawable/horizontal_divider.xml" value="0.183" />
         <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/drawable/ic_info.xml" value="0.174" />
         <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/drawable/ic_list.xml" value="0.174" />
         <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
         <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/layout/fragment_cart_page.xml" value="0.25" />
         <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/layout/fragment_menu_list.xml" value="0.25" />
+        <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/layout/menu_item.xml" value="0.25" />
         <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/layout/splash_screen.xml" value="0.25" />
         <entry key="..\:/Users/kmd02/AndroidStudioProjects/VKussovetApp/app/src/main/res/menu/bottom_menu.xml" value="0.25" />
       </map>
