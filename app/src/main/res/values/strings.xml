@@ -4,4 +4,5 @@
     <string name="menu">Меню</string>
     <string name="shoppingCart">Корзина</string>
     <string name="info">Информация</string>
+    <string name="errorMsg">Упс, похоже что-то пошло не так :( \n\t\t\t\t\tПовторите попытку позже!</string>
 </resources>
