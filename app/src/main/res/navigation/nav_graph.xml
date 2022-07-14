@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
     app:startDestination="@id/fragmentStartScreen">
 
     <fragment
         android:id="@+id/fragmentStartScreen"
-        android:name="com.memksim.vkussovet.view.splashScreen.FragmentStartScreen"
-        android:label="FragmentStartScreen" >
+        android:name="com.memksim.vkussovetapp.view.splashScreen.FragmentStartScreen"
+        android:label="FragmentStartScreen"
+        tools:layout="@layout/splash_screen">
         <action
             android:id="@+id/action_fragmentStartScreen_to_fragmentMenuListPage"
             app:destination="@id/fragmentMenuListPage" />
     </fragment>
     <fragment
         android:id="@+id/fragmentMenuListPage"
-        android:name="com.memksim.vkussovet.view.menuListPage.FragmentMenuListPage"
-        android:label="FragmentMenuListPage" >
+        android:name="com.memksim.vkussovetapp.view.menuListPage.FragmentMenuListPage"
+        android:label="FragmentMenuListPage"
+        tools:layout="@layout/fragment_menu_list">
         <action
             android:id="@+id/action_fragmentMenuListPage_to_fragmentCartPage"
             app:destination="@id/fragmentCartPage" />
@@ -25,8 +28,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentInfoPage"
-        android:name="com.memksim.vkussovet.view.infoPage.FragmentInfoPage"
-        android:label="FragmentInfoPage" >
+        android:name="com.memksim.vkussovetapp.view.infoPage.FragmentInfoPage"
+        android:label="FragmentInfoPage"
+        tools:layout="@layout/fragment_info_page">
         <action
             android:id="@+id/action_fragmentInfoPage_to_fragmentMenuListPage"
             app:destination="@id/fragmentMenuListPage" />
@@ -36,8 +40,9 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentCartPage"
-        android:name="com.memksim.vkussovet.view.cartPage.FragmentCartPage"
-        android:label="FragmentCartPage" >
+        android:name="com.memksim.vkussovetapp.view.cartPage.FragmentCartPage"
+        android:label="FragmentCartPage"
+        tools:layout="@layout/fragment_cart_page">
         <action
             android:id="@+id/action_fragmentCartPage_to_fragmentMenuListPage"
             app:destination="@id/fragmentMenuListPage" />
