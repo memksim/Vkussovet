@@ -5,4 +5,5 @@
     <string name="shoppingCart">Корзина</string>
     <string name="info">Информация</string>
     <string name="errorMsg">Упс, похоже что-то пошло не так.. Повторите попытку позже!</string>
+    <string name="call">Позвонить</string>
 </resources>

@@ -1,16 +1,20 @@
 package com.memksim.vkussovetapp.viewmodel.menuListPage
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.memksim.vkussovetapp.TAG
 import com.memksim.vkussovetapp.model.Menu
-import com.memksim.vkussovetapp.model.ParsedMenu
 import com.memksim.vkussovetapp.model.SubMenu
-import com.memksim.vkussovetapp.model.repos.Repository
-import com.memksim.vkussovetapp.viewmodel.Callback
-import com.squareup.picasso.RequestCreator
+import com.memksim.vkussovetapp.repos.Repository
 
-class MenuListPageViewModel: ViewModel(), Callback {
+interface ListPageCallback {
+    fun onSuccess(menu: List<Menu> = listOf(), subMenu: List<SubMenu> = listOf())
+    fun onError()
+}
+
+class MenuListPageViewModel: ViewModel(), ListPageCallback {
 
     private val repository = Repository()
 
@@ -23,49 +27,49 @@ class MenuListPageViewModel: ViewModel(), Callback {
         repository.getMenu(this)
     }
 
+    fun getSubmenu(menuID: String){
+        repository.loadSubmenu(this, menuID)
+    }
+
+    //called when fragment is created
     fun setData(
-        menuList: List<ParsedMenu>
+        menuList: List<Menu>
     ){
         _data.value = MenuListPageState(
             menuList = menuList,
+            emptyList(),
             menuIsNotLoaded = false
         )
     }
 
     override fun onSuccess(menu: List<Menu>, subMenu: List<SubMenu>) {
-        _data.value = MenuListPageState(
-            menuList = parseMenu(menu),
-            menuIsNotLoaded = false
-        )
-    }
 
-    private fun getUrls(menu: List<Menu>): List<String>{
-        val urls = arrayListOf<String>()
-        for(i in menu){
-            urls.add(i.image)
-        }
-        return urls
+        val state: MenuListPageState =
+            if(menu.isEmpty()){
+                MenuListPageState(
+                    menuList = _data.value!!.menuList,
+                    subMenuList = subMenu,
+                    menuIsNotLoaded = false
+                )
+            } else{
+                MenuListPageState(
+                    menuList = menu,
+                    subMenuList = _data.value!!.subMenuList,
+                    menuIsNotLoaded = false
+                )
+            }
+
+        Log.d(TAG, "onSuccess: ${state.toString()}")
+
+        _data.value = state
     }
 
     override fun onError() {
         _data.value = MenuListPageState(
-            listOf(),
+            emptyList(),
+            emptyList(),
             true
         )
     }
 
-    private fun parseMenu(menu: List<Menu>): List<ParsedMenu>{
-        val resultList = arrayListOf<ParsedMenu>()
-
-        for(i in menu){
-            resultList.add(ParsedMenu(
-                menuID = i.menuID,
-                image = "https://vkus-sovet.ru/${i.image}",
-                name = i.name,
-                subMenuCount = i.subMenuCount
-            ))
-        }
-
-        return resultList
-    }
 }

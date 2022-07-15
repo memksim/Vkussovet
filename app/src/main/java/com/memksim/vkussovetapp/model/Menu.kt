@@ -8,6 +8,7 @@ data class MenuRequest(
     val menuList: List<Menu>
 )
 
+const val MENU_LIST_TAG = "MENU_LIST"
 @Parcelize
 data class Menu(
     val menuID: String,

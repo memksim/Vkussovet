@@ -18,7 +18,7 @@
             app:destination="@id/fragmentInfoPage" />
         <argument
             android:name="menuList"
-            app:argType="com.memksim.vkussovetapp.model.ParsedMenu[]" />
+            app:argType="com.memksim.vkussovetapp.model.Menu[]" />
     </fragment>
     <fragment
         android:id="@+id/fragmentInfoPage"
