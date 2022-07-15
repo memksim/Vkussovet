@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentStartScreen">
+    app:startDestination="@id/fragmentMenuListPage">
 
-    <fragment
-        android:id="@+id/fragmentStartScreen"
-        android:name="com.memksim.vkussovetapp.view.splashScreen.FragmentStartScreen"
-        android:label="FragmentStartScreen"
-        tools:layout="@layout/splash_screen">
-        <action
-            android:id="@+id/action_fragmentStartScreen_to_fragmentMenuListPage"
-            app:destination="@id/fragmentMenuListPage" />
-    </fragment>
     <fragment
         android:id="@+id/fragmentMenuListPage"
         android:name="com.memksim.vkussovetapp.view.menuListPage.FragmentMenuListPage"
@@ -27,7 +18,7 @@
             app:destination="@id/fragmentInfoPage" />
         <argument
             android:name="menuList"
-            app:argType="com.memksim.vkussovetapp.model.Menu[]" />
+            app:argType="com.memksim.vkussovetapp.model.ParsedMenu[]" />
     </fragment>
     <fragment
         android:id="@+id/fragmentInfoPage"

@@ -2,6 +2,8 @@ package com.memksim.vkussovetapp.view.menuListPage
 
 import android.graphics.drawable.GradientDrawable
 import android.os.Bundle
+import android.os.Parcelable
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,8 +19,11 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.memksim.vkussovetapp.R
+import com.memksim.vkussovetapp.TAG
 import com.memksim.vkussovetapp.databinding.FragmentMenuListBinding
+import com.memksim.vkussovetapp.model.EXTRA_TAG
 import com.memksim.vkussovetapp.model.Menu
+import com.memksim.vkussovetapp.model.ParsedMenu
 import com.memksim.vkussovetapp.viewmodel.menuListPage.MenuListPageViewModel
 
 interface ItemClickListener{
@@ -31,7 +36,6 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickList
     private val binding get() = _binding
 
     private lateinit var navController: NavController
-    private val args: FragmentMenuListPageArgs by navArgs()
 
     private lateinit var viewModel: MenuListPageViewModel
 
@@ -40,8 +44,10 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickList
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
+        val data= arguments?.getParcelableArray(EXTRA_TAG)
+
         viewModel = ViewModelProvider(this)[MenuListPageViewModel::class.java]
-        viewModel.setData(parseArray(args.menuList))
+        viewModel.setData(getParsedMenuFromParcelable(data!!.asList()))
 
         val navHostFragment = requireActivity().supportFragmentManager.findFragmentById(R.id.fragmentContainer) as NavHostFragment
         navController = navHostFragment.navController
@@ -56,7 +62,7 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickList
         val layoutManager = LinearLayoutManager(context, LinearLayoutManager.HORIZONTAL, false)
         val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.HORIZONTAL)
         dividerItemDecoration.setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.horizontal_divider, null)!!)
-        binding!!.menuList.adapter = MenuAdapter(viewModel.liveData.value!!.menuList, viewModel.liveData.value!!.menuImages, this)
+        binding!!.menuList.adapter = MenuAdapter(viewModel.liveData.value!!.menuList,  this)
         binding!!.menuList.addItemDecoration(dividerItemDecoration)
     }
 
@@ -70,6 +76,15 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickList
 
     override fun onCLick(menuItem: Menu) {
         //TODO
+    }
+
+    private fun getParsedMenuFromParcelable(pItems: List<Parcelable>): List<ParsedMenu>{
+        val resultList = arrayListOf<ParsedMenu>()
+        for(i in pItems){
+            resultList.add(i as ParsedMenu)
+        }
+
+        return resultList
     }
 
 }

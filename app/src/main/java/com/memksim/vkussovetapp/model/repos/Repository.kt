@@ -18,7 +18,6 @@ class Repository {
 
     fun loadData(appCallback: AppCallback){
 
-        Log.d(TAG, "loadData: Test")
         api.getMenu()
             .enqueue(object: Callback<MenuRequest>{
                 override fun onResponse(
@@ -30,7 +29,6 @@ class Repository {
                         appCallback.onError()
                     }else{
                         appCallback.onLoaded(response.body()!!.menuList)
-                        Log.d(TAG, "onResponse: ${response.body()!!.menuList[3]}")
                     }
                 }
 

@@ -95,20 +95,8 @@
         app:layout_constraintStart_toStartOf="@id/menuNameTitle"
         app:layout_constraintTop_toBottomOf="@id/menuNameTitle"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/bottomNavigationView"/>
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNavigationView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
 
-        app:menu="@menu/bottom_menu"
-        app:labelVisibilityMode="unlabeled"
-        android:background = "@color/black"
-        app:itemIconTint="@color/bottom_nav_item_foreground"
-
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

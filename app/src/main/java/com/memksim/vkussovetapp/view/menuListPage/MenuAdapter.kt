@@ -12,12 +12,12 @@ import androidx.recyclerview.widget.RecyclerView
 import com.memksim.vkussovetapp.R
 import com.memksim.vkussovetapp.databinding.MenuItemBinding
 import com.memksim.vkussovetapp.model.Menu
+import com.memksim.vkussovetapp.model.ParsedMenu
 import com.squareup.picasso.Picasso
 import com.squareup.picasso.RequestCreator
 
 class MenuAdapter(
-    private val menuList: List<Menu>,
-    private val menuImagesList: List<RequestCreator>,
+    private val menuList: List<ParsedMenu>,
     private val clickListener: ItemClickListener
 ): RecyclerView.Adapter<MenuAdapter.MenuViewHolder>() {
     private var rowIndex = 0
@@ -25,7 +25,7 @@ class MenuAdapter(
     inner class MenuViewHolder(val binding: MenuItemBinding, private val context: Context): RecyclerView.ViewHolder(binding.root){
 
         fun onBind(position: Int){
-            menuImagesList[position].into(binding.image)
+            Picasso.get().load(menuList[position].image).into(binding.image)
             binding.title.text = menuList[position].name
             binding.counterText.text = "${menuList[position].subMenuCount} товаров"
         }

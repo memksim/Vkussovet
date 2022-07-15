@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.memksim.vkussovetapp.model.Menu
+import com.memksim.vkussovetapp.model.ParsedMenu
 import com.memksim.vkussovetapp.model.SubMenu
 import com.memksim.vkussovetapp.model.repos.Repository
 import com.memksim.vkussovetapp.viewmodel.Callback
@@ -23,19 +24,17 @@ class MenuListPageViewModel: ViewModel(), Callback {
     }
 
     fun setData(
-        menuList: List<Menu>
+        menuList: List<ParsedMenu>
     ){
         _data.value = MenuListPageState(
             menuList = menuList,
-            menuImages = repository.loadImages(getUrls(menuList)),
             menuIsNotLoaded = false
         )
     }
 
     override fun onSuccess(menu: List<Menu>, subMenu: List<SubMenu>) {
         _data.value = MenuListPageState(
-            menuList = menu,
-            menuImages = repository.loadImages(getUrls(menu)),
+            menuList = parseMenu(menu),
             menuIsNotLoaded = false
         )
     }
@@ -51,8 +50,22 @@ class MenuListPageViewModel: ViewModel(), Callback {
     override fun onError() {
         _data.value = MenuListPageState(
             listOf(),
-            listOf(),
             true
         )
+    }
+
+    private fun parseMenu(menu: List<Menu>): List<ParsedMenu>{
+        val resultList = arrayListOf<ParsedMenu>()
+
+        for(i in menu){
+            resultList.add(ParsedMenu(
+                menuID = i.menuID,
+                image = "https://vkus-sovet.ru/${i.image}",
+                name = i.name,
+                subMenuCount = i.subMenuCount
+            ))
+        }
+
+        return resultList
     }
 }
