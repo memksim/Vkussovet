@@ -2,29 +2,28 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:id="@+id/submenuItem"
-    android:layout_marginStart="8dp"
-    android:layout_marginBottom="16dp">
+    android:layout_width="170dp"
+    android:layout_height="300dp"
+    android:id="@+id/submenuItem">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:layout_width="wrap_content"
+        android:id="@+id/constraintLayout"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/submenu_item_background"
-        android:id="@+id/constraintLayout">
+        android:background="@drawable/submenu_item_background">
 
         <TextView
             android:id="@+id/nameTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginBottom="4dp"
-            android:text="Магура"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-
             android:layout_marginTop="4dp"
+            android:gravity="center|top"
+            android:lines="2"
+            android:text="Сливочная икруа"
+            android:textColor="@color/white"
+
+            android:textSize="18sp"
             app:layout_constraintBottom_toTopOf="@id/typeTitle"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,28 +34,29 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="Тунец"
-            android:textSize="16sp"
+            android:layout_marginBottom="10dp"
+            android:gravity="center|top"
+            android:lines="5"
+            android:text="Нежный, Шанхай, Калифорния MIX, Сяке суши 2 шт, Сяке чиз 2 шт, Тай темпура, Унаги темпура"
             android:textColor="@color/textColor"
 
-            android:layout_marginBottom="20dp"
-            app:layout_constraintStart_toStartOf="parent"
+            android:textSize="10sp"
+            app:layout_constraintBottom_toTopOf="@id/priceTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toTopOf="@id/priceTitle"/>
+            app:layout_constraintStart_toStartOf="parent" />
 
         <TextView
             android:id="@+id/priceTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:layout_marginBottom="8dp"
-            android:text="80 ₽"
+            android:layout_marginBottom="10dp"
+            android:text="1200.00₽"
             android:textColor="@color/white"
 
-            android:textSize="18sp"
+            android:textSize="12sp"
             app:layout_constraintBottom_toTopOf="@id/imageViewComtainer"
             app:layout_constraintEnd_toStartOf="@+id/weightTitle"
-            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent" />
 
@@ -65,9 +65,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
 
-            android:text="/ 40 г."
+            android:text="/400.00г."
             android:textColor="@color/textColor"
-            android:textSize="14sp"
+            android:textSize="8sp"
 
             app:layout_constraintBottom_toBottomOf="@id/priceTitle"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,15 +76,15 @@
 
         <ImageView
             android:id="@+id/spicyImg"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+
+            android:layout_marginEnd="8dp"
 
             android:src="@drawable/spicy_image"
-
-            app:layout_constraintTop_toTopOf="@id/priceTitle"
             app:layout_constraintBottom_toBottomOf="@id/priceTitle"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="8dp"/>
+            app:layout_constraintTop_toTopOf="@id/priceTitle" />
 
 
         <androidx.cardview.widget.CardView
@@ -98,8 +98,8 @@
 
             <ImageView
                 android:id="@+id/image"
-                android:layout_width="160dp"
-                android:layout_height="100dp"
+                android:layout_width="170dp"
+                android:layout_height="110dp"
                 android:outlineProvider="background"
                 android:scaleType="centerCrop"
                 android:src="@drawable/menu_item_image_example"
@@ -115,13 +115,13 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/constraintLayout"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="-32dp"
+        android:layout_marginTop="-24dp"
         android:paddingStart="20dp"
 
         android:paddingTop="12dp"
         android:paddingEnd="20dp"
         android:paddingBottom="12dp"
-        android:text="В корзину"
+        android:text="@string/toCart"
         android:textAllCaps="false"
 
         android:textSize="16sp"

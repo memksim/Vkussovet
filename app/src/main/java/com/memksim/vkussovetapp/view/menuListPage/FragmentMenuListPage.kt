@@ -69,13 +69,16 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickList
         })
 
         //horizontal dividing for menuList
-        val dividerItemDecoration = DividerItemDecoration(context, RecyclerView.HORIZONTAL)
-        dividerItemDecoration.setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.horizontal_divider, null)!!)
-        binding!!.menuList.addItemDecoration(dividerItemDecoration)
+        val horizontalDividerItemDecoration = DividerItemDecoration(context, RecyclerView.HORIZONTAL)
+        horizontalDividerItemDecoration.setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.horizontal_divider, null)!!)
+        binding!!.menuList.addItemDecoration(horizontalDividerItemDecoration)
         //adapter for menuList
         binding!!.menuList.adapter = MenuAdapter(viewModel.liveData.value!!.menuList,  this)
 
-
+        val verticalDividerItemDecoration = DividerItemDecoration(context, RecyclerView.VERTICAL)
+        verticalDividerItemDecoration.setDrawable(ResourcesCompat.getDrawable(resources, R.drawable.vertical_divider, null)!!)
+        binding!!.submenuList.addItemDecoration(horizontalDividerItemDecoration)
+        binding!!.submenuList.addItemDecoration(verticalDividerItemDecoration)
         binding!!.submenuList.layoutManager = GridLayoutManager(context, 2, GridLayoutManager.VERTICAL, false)
         binding!!.submenuList.adapter = subMenuAdapter
 
