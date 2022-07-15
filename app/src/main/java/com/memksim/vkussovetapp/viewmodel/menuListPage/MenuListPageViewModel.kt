@@ -36,8 +36,18 @@ class MenuListPageViewModel: ViewModel(), ListPageCallback {
         menuList: List<Menu>
     ){
         _data.value = MenuListPageState(
+            menuList[0],
             menuList = menuList,
             emptyList(),
+            menuIsNotLoaded = false
+        )
+    }
+
+    fun setSelectedItem(menuItem: Menu){
+        _data.value = MenuListPageState(
+            selectedItem = menuItem,
+            menuList = _data.value!!.menuList,
+            subMenuList = _data.value!!.subMenuList,
             menuIsNotLoaded = false
         )
     }
@@ -47,12 +57,14 @@ class MenuListPageViewModel: ViewModel(), ListPageCallback {
         val state: MenuListPageState =
             if(menu.isEmpty()){
                 MenuListPageState(
+                    selectedItem = _data.value!!.selectedItem,
                     menuList = _data.value!!.menuList,
                     subMenuList = subMenu,
                     menuIsNotLoaded = false
                 )
             } else{
                 MenuListPageState(
+                    selectedItem = menu[0],
                     menuList = menu,
                     subMenuList = _data.value!!.subMenuList,
                     menuIsNotLoaded = false
@@ -66,6 +78,12 @@ class MenuListPageViewModel: ViewModel(), ListPageCallback {
 
     override fun onError() {
         _data.value = MenuListPageState(
+            Menu(
+                "",
+                "",
+                "",
+                ""
+            ),
             emptyList(),
             emptyList(),
             true

@@ -65,6 +65,7 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickList
         viewModel.liveData.observe(viewLifecycleOwner, Observer {
             subMenuAdapter.notifyDataSetChanged()
             subMenuAdapter.submenuList = it.subMenuList
+            binding!!.menuNameTitle.text = it.selectedItem.name
         })
 
         //horizontal dividing for menuList
@@ -86,6 +87,7 @@ class FragmentMenuListPage: Fragment(R.layout.fragment_menu_list), ItemClickList
     }
 
     override fun onCLick(menuItem: Menu) {
+        viewModel.setSelectedItem(menuItem)
         viewModel.getSubmenu(menuItem.menuID)
     }
 

@@ -5,7 +5,7 @@ import com.memksim.vkussovetapp.model.SubMenu
 import com.squareup.picasso.RequestCreator
 
 data class MenuListPageState(
-
+    val selectedItem: Menu,
     val menuList: List<Menu>,
     val subMenuList: List<SubMenu>,
     val menuIsNotLoaded: Boolean
