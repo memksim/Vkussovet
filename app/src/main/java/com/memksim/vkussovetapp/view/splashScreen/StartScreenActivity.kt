@@ -48,6 +48,7 @@ class StartScreenActivity : AppCompatActivity(), AppCallback {
         binding.progressBar.visibility = View.GONE
 
         startActivity(intent)
+        finish()
     }
 
 
