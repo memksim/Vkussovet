@@ -9,6 +9,8 @@ import androidx.navigation.createGraph
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.setupWithNavController
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.memksim.vkussovetapp.model.MENU_LIST_TAG
 import com.memksim.vkussovetapp.model.Menu
 
@@ -34,6 +36,10 @@ class MainActivity : AppCompatActivity() {
         bundle.putParcelableArray(MENU_LIST_TAG, menuList.toTypedArray())
 
         navHostFragment.navController.setGraph(R.navigation.nav_graph, bundle)
+
+        //initial bottomNav
+        val bottomNavView = findViewById<BottomNavigationView>(R.id.bottomNavigationView)
+        bottomNavView.setupWithNavController(navHostFragment.navController)
         
     }
 }

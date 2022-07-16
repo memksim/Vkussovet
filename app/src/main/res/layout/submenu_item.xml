@@ -124,7 +124,7 @@
         android:text="@string/toCart"
         android:textAllCaps="false"
 
-        android:textSize="16sp"
+        android:textSize="14sp"
         app:backgroundTint="@color/accent"
         app:cornerRadius="12dp" />
 

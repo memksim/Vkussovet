@@ -28,7 +28,7 @@ class StartScreenActivity : AppCompatActivity(), AppCallback {
 
         binding.progressBar.visibility = View.VISIBLE
         repository = Repository()
-        Thread.sleep(4000)
+        //Thread.sleep(4000)
         repository.loadData(this)
 
     }
@@ -44,7 +44,7 @@ class StartScreenActivity : AppCompatActivity(), AppCallback {
         bundle.putParcelableArrayList(MENU_LIST_TAG, data as ArrayList)
         intent.putExtras(bundle)
 
-        Thread.sleep(1000)
+        Thread.sleep(2000)
         binding.progressBar.visibility = View.GONE
 
         startActivity(intent)

@@ -2,17 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@+id/menuList"
+        android:id="@+id/fragmentMenuListPage"
         android:icon="@drawable/ic_list"
         android:title="@string/menu"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/cart"
+        android:id="@+id/fragmentCartPage"
         android:icon="@drawable/ic_shopping_bag"
         android:title="@string/shoppingCart"
         app:showAsAction="always"/>
     <item
-        android:id="@+id/info"
+        android:id="@+id/fragmentInfoPage"
         android:icon="@drawable/ic_info"
         android:title="@string/info"
         app:showAsAction="always"/>

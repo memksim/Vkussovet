@@ -18,7 +18,7 @@ class SubMenuAdapter(
             binding.nameTitle.text = submenuList[position].name
             binding.typeTitle.text = submenuList[position].content
             binding.priceTitle.text = "${submenuList[position].price}₽"
-            binding.weightTitle.text = "/${submenuList[position].weight}г."
+            binding.weightTitle.text = "/${submenuList[position].weight}"
             if (submenuList[position].spicy == "Y"){
                 binding.spicyImg.visibility = View.VISIBLE
             }else{
