@@ -14,6 +14,7 @@ import com.squareup.picasso.Picasso
 class SubMenuAdapter(
 ): RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>() {
     var submenuList: List<SubMenu> = emptyList()
+    val selectedItems: ArrayList<SubMenu> = arrayListOf()
 
     inner class SubMenuViewHolder(val binding: SubmenuItemBinding,private val context: Context): RecyclerView.ViewHolder(binding.root){
         fun onBind(position: Int){
@@ -43,6 +44,20 @@ class SubMenuAdapter(
             }
         }
 
+        fun setBasicButton(){
+            binding.addToCardButton.apply {
+                setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.accent, null))
+                text = context.resources.getString(R.string.toCart)
+            }
+        }
+
+        fun setSelectedButton(){
+            binding.addToCardButton.apply {
+                setBackgroundColor(ResourcesCompat.getColor(context.resources, R.color.secondary, null))
+                text = context.resources.getString(R.string.inCart)
+            }
+        }
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SubMenuViewHolder {
@@ -55,8 +70,21 @@ class SubMenuAdapter(
     override fun onBindViewHolder(holder: SubMenuViewHolder, position: Int) {
         holder.onBind(position)
 
+        var isSelected = false
+        for(i in selectedItems){
+            if(i.id == submenuList[position].id){
+                isSelected = true
+            }
+        }
+        if(!isSelected){
+            holder.setBasicButton()
+        }else{
+            holder.setSelectedButton()
+        }
+
         holder.binding.addToCardButton.setOnClickListener {
             holder.buttonClicked()
+            selectedItems.add(submenuList[position])
         }
 
     }
