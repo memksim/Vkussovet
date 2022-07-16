@@ -14,7 +14,7 @@ import com.squareup.picasso.Picasso
 class SubMenuAdapter(
 ): RecyclerView.Adapter<SubMenuAdapter.SubMenuViewHolder>() {
     var submenuList: List<SubMenu> = emptyList()
-    val selectedItems: ArrayList<SubMenu> = arrayListOf()
+    private val selectedItems: ArrayList<SubMenu> = arrayListOf()
 
     inner class SubMenuViewHolder(val binding: SubmenuItemBinding,private val context: Context): RecyclerView.ViewHolder(binding.root){
         fun onBind(position: Int){
@@ -84,7 +84,13 @@ class SubMenuAdapter(
 
         holder.binding.addToCardButton.setOnClickListener {
             holder.buttonClicked()
-            selectedItems.add(submenuList[position])
+            val selectedItem = submenuList[position]
+            if(selectedItems.contains(selectedItem)){
+                selectedItems.remove(selectedItem)
+            }else{
+                selectedItems.add(submenuList[position])
+            }
+
         }
 
     }
